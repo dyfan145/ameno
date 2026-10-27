@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,205 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime | ameno.</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Anime scene galleries — scoped to this page */
+    .scene-section {
+      margin-top: 64px;
+      scroll-margin-top: 90px;
+    }
+
+    .scene-heading {
+      margin-bottom: 24px;
+    }
+
+    .scene-heading h2 {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      margin: 8px 0;
+    }
+
+    .scene-heading p {
+      opacity: .7;
+      line-height: 1.7;
+    }
+
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .scene-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.035);
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+      color: inherit;
+      font: inherit;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(160,120,255,.7);
+    }
+
+    .scene-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+
+    .scene-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .scene-caption {
+      display: block;
+      padding: 12px 14px;
+      font-size: .9rem;
+      opacity: .85;
+    }
+
+    .scene-empty {
+      opacity: .65;
+      line-height: 1.7;
+      padding: 18px 0;
+    }
+
+    /* Image lightbox */
+    .scene-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 70px 76px;
+      background: rgba(5, 5, 14, .94);
+      backdrop-filter: blur(12px);
+    }
+
+    .scene-lightbox.is-open {
+      display: flex;
+    }
+
+    .scene-lightbox-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .scene-lightbox img {
+      display: block;
+      max-width: min(100%, 1100px);
+      max-height: calc(100vh - 150px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 50px rgba(115, 75, 255, .15);
+    }
+
+    .scene-lightbox-caption {
+      color: #fff;
+      text-align: center;
+      font-size: .95rem;
+    }
+
+    .scene-lightbox-close,
+    .scene-lightbox-arrow {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+
+    .scene-lightbox-close:hover,
+    .scene-lightbox-arrow:hover {
+      background: rgba(145,100,255,.5);
+    }
+
+    .scene-lightbox-close {
+      top: 22px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      font-size: 25px;
+    }
+
+    .scene-lightbox-arrow {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      font-size: 27px;
+    }
+
+    .scene-lightbox-prev {
+      left: 18px;
+    }
+
+    .scene-lightbox-next {
+      right: 18px;
+    }
+
+    .scene-lightbox-count {
+      color: rgba(255,255,255,.6);
+      font-size: .8rem;
+    }
+
+    @media (max-width: 760px) {
+      .scene-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .scene-lightbox {
+        padding: 65px 48px;
+      }
+
+      .scene-lightbox-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 22px;
+      }
+
+      .scene-lightbox-prev {
+        left: 5px;
+      }
+
+      .scene-lightbox-next {
+        right: 5px;
+      }
+
+      .scene-lightbox img {
+        max-height: calc(100vh - 150px);
+      }
+    }
+
+    @media (max-width: 420px) {
+      .scene-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header class="topbar">
     <a href="index.html" class="brand">ameno<span>.</span></a>
@@ -30,6 +229,7 @@
       </p>
     </div>
 
+    <!-- Anime cover cards -->
     <div class="anime-grid">
       <article class="anime-card glass reveal">
         <img
@@ -63,15 +263,214 @@
       </article>
     </div>
 
+    <!-- Black Clover gallery -->
+    <section class="scene-section reveal" id="black-clover">
+      <div class="scene-heading">
+        <p class="section-index">01 / MY FAVORITE SCENES</p>
+        <h2>Black Clover<span>.</span></h2>
+        <p>Favorite moments from the world of magic.</p>
+      </div>
+
+      <div class="scene-grid" id="blackCloverGallery">
+        <!-- Add your Black Clover scene images here -->
+        <p class="scene-empty">
+          Your Black Clover scenes will appear here. Add image links to the
+          gallery code when you're ready.
+        </p>
+      </div>
+    </section>
+
+    <!-- Naruto gallery -->
+    <section class="scene-section reveal" id="naruto">
+      <div class="scene-heading">
+        <p class="section-index">02 / MY FAVORITE SCENES</p>
+        <h2>Naruto<span>.</span></h2>
+        <p>Memorable moments from the shinobi world.</p>
+      </div>
+
+      <div class="scene-grid" id="narutoGallery">
+        <!-- Add your Naruto scene images here -->
+        <p class="scene-empty">
+          Your Naruto scenes will appear here. Add image links to the
+          gallery code when you're ready.
+        </p>
+      </div>
+    </section>
+
     <div class="page-bottom reveal">
       <a href="index.html" class="button">← Back to Home</a>
     </div>
   </main>
 
+  <!-- Image viewer -->
+  <div class="scene-lightbox" id="sceneLightbox"
+    role="dialog" aria-modal="true" aria-label="Anime scene viewer">
+
+    <button class="scene-lightbox-close" id="sceneClose"
+      aria-label="Close image viewer">×</button>
+
+    <button class="scene-lightbox-arrow scene-lightbox-prev"
+      id="scenePrev" aria-label="Previous image">‹</button>
+
+    <div class="scene-lightbox-content">
+      <img id="sceneLargeImage" src="" alt="">
+      <div class="scene-lightbox-caption" id="sceneCaption"></div>
+      <div class="scene-lightbox-count" id="sceneCount"></div>
+    </div>
+
+    <button class="scene-lightbox-arrow scene-lightbox-next"
+      id="sceneNext" aria-label="Next image">›</button>
+  </div>
+
   <button id="topButton" class="top-button"
     aria-label="Back to top">↑</button>
 
   <script src="script.js"></script>
+
+  <script>
+    /*
+      Add scene images to the arrays below.
+      Each image needs a direct image URL and a caption.
+    */
+    const animeScenes = {
+      blackClover: [
+        // Example:
+        // {
+        //   src: "https://example.com/black-clover-scene.jpg",
+        //   title: "Asta's favorite moment"
+        // }
+      ],
+
+      naruto: [
+        // Example:
+        // {
+        //   src: "https://example.com/naruto-scene.jpg",
+        //   title: "Naruto's favorite moment"
+        // }
+      ]
+    };
+
+    const sceneGroups = {
+      blackClover: [],
+      naruto: []
+    };
+
+    function renderSceneGallery(galleryId, scenes, groupName) {
+      const gallery = document.getElementById(galleryId);
+      gallery.innerHTML = "";
+
+      if (!scenes.length) {
+        const empty = document.createElement("p");
+        empty.className = "scene-empty";
+        empty.textContent = "Scene images will appear here when you add them.";
+        gallery.appendChild(empty);
+        return;
+      }
+
+      scenes.forEach((scene, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "scene-card";
+        button.setAttribute("aria-label", "Open " + scene.title);
+
+        const image = document.createElement("img");
+        image.src = scene.src;
+        image.alt = scene.title;
+        image.loading = "lazy";
+
+        const caption = document.createElement("span");
+        caption.className = "scene-caption";
+        caption.textContent = scene.title;
+
+        button.append(image, caption);
+        button.addEventListener("click", () => openScene(groupName, index));
+        gallery.appendChild(button);
+      });
+    }
+
+    let currentSceneGroup = "blackClover";
+    let currentSceneIndex = 0;
+
+    const lightbox = document.getElementById("sceneLightbox");
+    const largeImage = document.getElementById("sceneLargeImage");
+    const caption = document.getElementById("sceneCaption");
+    const count = document.getElementById("sceneCount");
+    const closeButton = document.getElementById("sceneClose");
+
+    function openScene(groupName, index) {
+      currentSceneGroup = groupName;
+      currentSceneIndex = index;
+      updateSceneViewer();
+
+      lightbox.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      closeButton.focus();
+    }
+
+    function updateSceneViewer() {
+      const scenes = sceneGroups[currentSceneGroup];
+      if (!scenes || !scenes.length) return;
+
+      const scene = scenes[currentSceneIndex];
+      largeImage.src = scene.src;
+      largeImage.alt = scene.title;
+      caption.textContent = scene.title;
+      count.textContent =
+        (currentSceneIndex + 1) + " / " + scenes.length;
+    }
+
+    function moveScene(direction) {
+      const scenes = sceneGroups[currentSceneGroup];
+      if (!scenes || !scenes.length) return;
+
+      currentSceneIndex =
+        (currentSceneIndex + direction + scenes.length) % scenes.length;
+
+      updateSceneViewer();
+    }
+
+    function closeSceneViewer() {
+      lightbox.classList.remove("is-open");
+      largeImage.src = "";
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("scenePrev").addEventListener("click", () => {
+      moveScene(-1);
+    });
+
+    document.getElementById("sceneNext").addEventListener("click", () => {
+      moveScene(1);
+    });
+
+    closeButton.addEventListener("click", closeSceneViewer);
+
+    lightbox.addEventListener("click", event => {
+      if (event.target === lightbox) closeSceneViewer();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!lightbox.classList.contains("is-open")) return;
+
+      if (event.key === "Escape") closeSceneViewer();
+      if (event.key === "ArrowLeft") moveScene(-1);
+      if (event.key === "ArrowRight") moveScene(1);
+    });
+
+    sceneGroups.blackClover = animeScenes.blackClover;
+    sceneGroups.naruto = animeScenes.naruto;
+
+    renderSceneGallery(
+      "blackCloverGallery",
+      sceneGroups.blackClover,
+      "blackClover"
+    );
+
+    renderSceneGallery(
+      "narutoGallery",
+      sceneGroups.naruto,
+      "naruto"
+    );
+  </script>
 </body>
 </html>
-```
