@@ -1331,3 +1331,23 @@ footer > a:last-child:hover {
     transition-duration: 0.01ms !important;
   }
 }
+
+```css
+.achievement-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 9px 15px;
+    border: 1px solid #7857ff;
+    border-radius: 10px;
+    color: #c4b5fd;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.25s ease;
+}
+
+.achievement-link:hover {
+    background: #7857ff;
+    color: #ffffff;
+    box-shadow: 0 0 16px rgba(120, 87, 255, 0.35);
+}
+```
