@@ -500,3 +500,108 @@ span {
   }
 }
 ```
+
+```css
+/* ========================================
+   AMENO — BLUE/PURPLE DREAMY REFINEMENT
+   Append this below the existing CSS
+======================================== */
+
+:root {
+  --bg: #090b18;
+  --surface: #111529;
+  --surface-light: #191e39;
+  --purple: #a99aff;
+  --purple-bright: #c9c0ff;
+  --text: #f2f3ff;
+  --muted: #a5accb;
+  --border: rgba(164, 170, 255, 0.17);
+}
+
+body {
+  background:
+    radial-gradient(
+      ellipse at 12% 5%,
+      rgba(100, 93, 220, 0.17),
+      transparent 36%
+    ),
+    radial-gradient(
+      ellipse at 92% 35%,
+      rgba(56, 113, 210, 0.10),
+      transparent 32%
+    ),
+    #090b18;
+  color: var(--text);
+  line-height: 1.75;
+}
+
+::selection {
+  background: rgba(169, 154, 255, 0.35);
+  color: #fff;
+}
+
+a {
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.topbar {
+  position: relative;
+  border-bottom-color: rgba(164, 170, 255, 0.12);
+}
+
+.brand {
+  letter-spacing: -1.4px;
+}
+
+.brand span,
+.page-header h1 span {
+  color: #a99aff;
+}
+
+.nav-links a {
+  transition: color 0.25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: #c9c0ff;
+}
+
+.section {
+  padding-top: clamp(56px, 8vw, 96px);
+  padding-bottom: clamp(56px, 8vw, 96px);
+}
+
+.page-header {
+  margin-bottom: 48px;
+}
+
+.page-header h1 {
+  letter-spacing: -2px;
+  text-wrap: balance;
+}
+
+.page-description {
+  color: #a5accb;
+  line-height: 1.85;
+}
+
+/* Refined glass surface */
+
+.glass {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(26, 30, 57, 0.90),
+      rgba(14, 17, 35, 0.94)
+    );
+  border: 1px solid rgba(164, 170, 255, 0.15);
+  border-radius: 22px;
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(12px);
+ 
