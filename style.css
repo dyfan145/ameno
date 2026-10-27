@@ -39,16 +39,22 @@ body {
   line-height: 1.7;
 }
 
+
 body::before {
   position: fixed;
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(ellipse at 15% 15%, rgba(91, 69, 173, 0.13), transparent 40%),
-    radial-gradient(ellipse at 85% 60%, rgba(61, 94, 165, 0.10), transparent 42%);
+    linear-gradient(
+      rgba(8, 9, 20, 0.48),
+      rgba(8, 9, 20, 0.72)
+    ),
+    url("https://i.pinimg.com/1200x/83/8e/c8/838ec872b3f4133b260f1db4d7f894c8.jpg")
+    center center / cover no-repeat;
   content: "";
   pointer-events: none;
 }
+
 
 a {
   color: inherit;
