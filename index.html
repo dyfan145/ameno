@@ -1,84 +1,77 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080914">
-  <meta name="description" content="Ameno's personal anime aesthetic portfolio.">
-  <title>Ameno — Anime Aesthetic Portfolio</title>
+  <title>Ameno. — My Little World</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
-
   <header class="topbar">
-    <a class="brand" href="#home">
-      <span class="brand-mark">✦</span> ameno<span class="brand-dot">.</span>
-    </a>
+    <a class="brand" href="index.html">✦ ameno<span>.</span></a>
 
     <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
 
     <nav id="navLinks">
       <a href="#about">About</a>
-      <a href="#interests">Interests</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact" class="nav-cta">Say hello ↗</a>
+      <a href="#explore">Explore</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
     <!-- HERO -->
     <section class="hero section" id="home">
-      <div class="hero-copy reveal">
+      <div class="hero-copy">
         <div class="eyebrow">
-          <span class="pulse"></span> PERSONAL SPACE · ONLINE
+          <span class="pulse"></span>
+          PERSONAL SPACE · ONLINE
         </div>
 
-        <p class="jp">アメノ — Ameno Jungler Hebat</p>
+        <p class="jp">アメノ — Ameno</p>
 
         <h1>
-          Great Jungler<br>
-          <span>With A </span> Lot Of Experiences<span class="title-star">✦</span>
+          Welcome to<br>
+          <span>my little world.</span> ✦
         </h1>
 
-        <p class="hero-desc">A Great Player Who Can play all roles.</p>
+        <p class="hero-desc">
+          A little corner of the internet filled with games,
+          anime, music, and things I love.
+        </p>
 
         <div class="hero-actions">
-          <a class="button primary" href="#about">Explore my world <span>↘</span></a>
-          <a class="button ghost" href="#contact">Find me online</a>
+          <a class="button primary" href="#about">Discover my world ↘</a>
+          <a class="button ghost" href="#explore">Explore pages</a>
         </div>
 
         <div class="mini-status">
-          <span class="status-avatar">ゆ</span>
+          <div class="status-avatar">ゆ</div>
           <div>
-            <strong>Ameno</strong>
+            <strong>Ameno / Raenyf</strong>
             <small>probably listening to music ♪</small>
           </div>
           <span class="status-live">● ONLINE</span>
         </div>
       </div>
 
-      <div class="hero-art reveal" aria-label="Anime-inspired artwork">
+      <div class="hero-art">
         <div class="art-orbit orbit-a"></div>
         <div class="art-orbit orbit-b"></div>
-
-        <div class="art-label label-top">NO. 001 / DREAMER</div>
-        <div class="art-spark spark-one">✧</div>
-        <div class="art-spark spark-two">✦</div>
-        <div class="art-spark spark-three">✧</div>
 
         <div class="character-card">
           <img
             class="anime-art"
             src="https://i.pinimg.com/1200x/b0/31/24/b031243838bffc60c16e34e72e07f92f.jpg"
-            alt="Ameno anime character"
+            alt="Ameno anime aesthetic"
           >
 
           <div class="character-caption">
@@ -87,26 +80,26 @@
           </div>
         </div>
 
-        <div class="art-label label-bottom">
-          AESTHETIC ARCHIVE <span>↗</span>
-        </div>
-      </div>
+        <span class="art-spark spark-one">✧</span>
+        <span class="art-spark spark-two">✦</span>
+        <span class="art-spark spark-three">✧</span>
 
-      <a class="scroll-cue" href="#about">
-        <span></span> SCROLL TO EXPLORE
-      </a>
+        <div class="art-label label-top">NO. 001 / DREAMER</div>
+        <div class="art-label label-bottom">AESTHETIC ARCHIVE ↗</div>
+      </div>
     </section>
 
-    <!-- ABOUT ME -->
-    <section class="about section" id="about">
-      <div class="section-heading reveal">
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="section-heading">
         <span class="section-index">01 — ABOUT ME</span>
         <h2>A world of <em>my own.</em></h2>
       </div>
 
       <div class="about-grid">
-        <div class="about-note glass reveal">
+        <div class="about-note glass">
           <div class="note-icon">✦</div>
+
           <h3>Hey, welcome in.</h3>
 
           <p>
@@ -120,154 +113,111 @@
           <p class="muted">“Manusia Hanyalah Alat.”</p>
         </div>
 
-        <!-- CLICKABLE SHORTCUTS -->
-        <div class="stats-grid reveal">
-          <a href="#games" class="stat glass stat-link">
+        <div class="stats-grid">
+          <a class="stat glass stat-link" href="games.html">
             <span class="stat-symbol">♡</span>
             <strong>∞</strong>
             <small>GAMES I PLAYED</small>
+            <span class="stat-arrow">↗</span>
           </a>
 
-          <a href="#anime" class="stat glass stat-link">
+          <a class="stat glass stat-link" href="anime.html">
             <span class="stat-symbol">⌁</span>
             <strong>24/7</strong>
-            <small>ANIME I LIKE</small>
+            <small>ANIME I WATCH</small>
+            <span class="stat-arrow">↗</span>
           </a>
 
-          <a href="#songs" class="stat glass stat-link">
+          <a class="stat glass stat-link" href="songs.html">
             <span class="stat-symbol">✧</span>
-            <strong>GG</strong>
+            <strong>♫</strong>
             <small>SONGS I LIKE</small>
+            <span class="stat-arrow">↗</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- INTERESTS -->
-    <section class="interests section" id="interests">
-      <div class="section-heading reveal">
-        <span class="section-index">02 — THINGS I LOVE</span>
-        <h2>Current <em>obsessions.</em></h2>
+    <!-- EXPLORE -->
+    <section class="section" id="explore">
+      <div class="section-heading">
+        <span class="section-index">02 — EXPLORE MY WORLD</span>
+        <h2>Choose your <em>destination.</em></h2>
       </div>
 
       <div class="interest-grid">
-
-        <!-- ANIME -->
-        <article class="interest-card reveal">
-          <div class="interest-art anime-bg">
-            <span>アニメ</span>
-            <b>✧</b>
-          </div>
-
-          <div class="interest-content">
-            <span class="pill">01 / STORIES</span>
-            <h3 id="anime">Anime I Love</h3>
-            <p>Beautiful art, unforgettable characters, and stories that stay with me.</p>
-
-            <ul>
-              <li>Black Clover</li>
-              <li>Naruto</li>
-              <li>Maou Gakuin</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- GAMES -->
-        <article class="interest-card reveal">
+        <a class="interest-card page-card" href="games.html">
           <div class="interest-art game-bg">
             <span>PLAYER 01</span>
             <b>⌁</b>
           </div>
 
           <div class="interest-content">
-            <span class="pill">02 / PLAY</span>
-            <h3 id="games">Games I Play</h3>
-            <p>One more match. One more quest. Always ready for another adventure.</p>
-
-            <ul>
-              <li>Mobile Legends</li>
-              <li>Marvel's Spider-Man 2</li>
-            </ul>
+            <span class="pill">01 / PLAY</span>
+            <h3>Games I Played</h3>
+            <p>
+              From intense battles to adventures in another world.
+            </p>
+            <span class="card-link">Explore games ↗</span>
           </div>
-        </article>
+        </a>
 
-        <!-- SONGS -->
-        <article class="interest-card reveal">
+        <a class="interest-card page-card" href="anime.html">
+          <div class="interest-art anime-bg">
+            <span>ANIME ARCHIVE</span>
+            <b>✧</b>
+          </div>
+
+          <div class="interest-content">
+            <span class="pill">02 / WATCH</span>
+            <h3>Anime I Watch</h3>
+            <p>
+              Stories, characters, and anime worlds I enjoy.
+            </p>
+            <span class="card-link">Explore anime ↗</span>
+          </div>
+        </a>
+
+        <a class="interest-card page-card" href="songs.html">
           <div class="interest-art music-bg">
             <span>NOW PLAYING</span>
             <b>♫</b>
           </div>
 
           <div class="interest-content">
-            <span class="pill">03 / FEEL</span>
-            <h3 id="songs">Songs on Repeat</h3>
-            <p>Little soundtracks for different moments in my world.</p>
-
-            <ul>
-              <li><strong>Pretender</strong> — Harutya</li>
-              <li><strong>Hujan</strong> — Utopia</li>
-              <li><strong>2002</strong> — Anne-Marie</li>
-            </ul>
+            <span class="pill">03 / LISTEN</span>
+            <h3>Songs I Like</h3>
+            <p>
+              Songs that fit different moods and moments.
+            </p>
+            <span class="card-link">Listen with me ↗</span>
           </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="gallery section" id="gallery">
-      <div class="section-heading reveal">
-        <span class="section-index">03 — MOODBOARD</span>
-        <h2>Little pieces of <em>magic.</em></h2>
-      </div>
-
-      <div class="moodboard reveal">
-        <div class="mood mood-one">
-          <span>dreamscape</span><b>✦</b>
-        </div>
-        <div class="mood mood-two">
-          <span>midnight blue</span><b>☾</b>
-        </div>
-        <div class="mood mood-three">
-          <span>soft chaos</span><b>✧</b>
-        </div>
-        <div class="mood mood-four">
-          <span>stay curious</span><b>∞</b>
-        </div>
+        </a>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="contact section" id="contact">
-      <div class="contact-panel reveal">
-        <span class="section-index">04 — CONNECT</span>
+    <section class="section contact" id="contact">
+      <div class="contact-panel">
+        <span class="section-index">03 — CONNECT</span>
         <div class="contact-star">✧</div>
 
         <h2>Let's be <em>internet friends.</em></h2>
+
         <p>
-          Got a game recommendation, an anime to obsess over,
-          or just want to say hi?
+          Thanks for visiting my little world.
+          Feel free to explore and enjoy your stay.
         </p>
 
-        <a
-          class="button primary"
-          href="https://discord.com/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Find me on Discord ↗
+        <a class="button primary" href="games.html">
+          Explore my games ↗
         </a>
-
-        <small>Replace this Discord link with your profile or server link.</small>
       </div>
     </section>
   </main>
 
   <footer>
-    <a class="brand" href="#home">
-      <span class="brand-mark">✦</span> ameno<span class="brand-dot">.</span>
-    </a>
-
+    <a class="brand" href="index.html">✦ ameno<span>.</span></a>
     <span>MADE WITH ♡ & A LITTLE MAGIC</span>
     <a href="#home">BACK TO TOP ↑</a>
   </footer>
@@ -275,42 +225,5 @@
   <button class="top-button" id="topButton" aria-label="Back to top">↑</button>
 
   <script src="script.js"></script>
-
-  <!-- Smooth scrolling and clickable stat cards -->
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .stat-link {
-      display: flex;
-      flex-direction: column;
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.25s ease, border-color 0.25s ease;
-    }
-
-    .stat-link:hover {
-      transform: translateY(-5px);
-      border-color: #9b87ff;
-    }
-
-    #games,
-    #anime,
-    #songs {
-      scroll-margin-top: 110px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .stat-link {
-        transition: none;
-      }
-    }
-  </style>
 </body>
 </html>
