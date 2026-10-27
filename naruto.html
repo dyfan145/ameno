@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naruto | ameno.</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .favorite-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .favorite-scene {
+      padding: 0;
+      overflow: hidden;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      font: inherit;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .favorite-scene:hover {
+      transform: translateY(-5px);
+      border-color: rgba(160,120,255,.7);
+    }
+
+    .favorite-scene img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .scene-title {
+      display: block;
+      padding: 13px;
+      font-size: .9rem;
+    }
+
+    .scene-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 65px;
+      background: rgba(5,5,14,.95);
+      backdrop-filter: blur(12px);
+    }
+
+    .scene-viewer.open {
+      display: flex;
+    }
+
+    .viewer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .viewer-content img {
+      max-width: 100%;
+      max-height: calc(100vh - 140px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .viewer-caption {
+      color: white;
+      text-align: center;
+    }
+
+    .viewer-button {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      color: white;
+      font-size: 26px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .viewer-button:hover {
+      background: rgba(145,100,255,.5);
+    }
+
+    .viewer-close {
+      top: 20px;
+      right: 22px;
+    }
+
+    .viewer-prev {
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .viewer-next {
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .viewer-count {
+      color: rgba(255,255,255,.6);
+      font-size: .8rem;
+    }
+
+    .gallery-empty {
+      grid-column: 1 / -1;
+      opacity: .7;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 760px) {
+      .favorite-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .scene-viewer {
+        padding: 55px 45px;
+      }
+
+      .viewer-button {
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
+      }
+
+      .viewer-prev { left: 4px; }
+      .viewer-next { right: 4px; }
+    }
+
+    @media (max-width: 420px) {
+      .favorite-gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">ameno<span>.</span></a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="games.html">Games</a>
+      <a href="anime.html">Anime</a>
+      <a href="songs.html">Songs</a>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="page-header reveal">
+      <p class="section-index">MY FAVORITE SCENES / 02</p>
+      <h1>Naruto<span>.</span></h1>
+      <p class="page-description">
+        The moments, fights, and memories I love the most.
+      </p>
+    </div>
+
+    <div class="favorite-gallery" id="favoriteGallery"></div>
+
+    <div class="page-bottom reveal">
+      <a href="anime.html" class="button">← Back to Anime</a>
+    </div>
+  </main>
+
+  <div class="scene-viewer" id="sceneViewer"
+    role="dialog" aria-modal="true" aria-label="Scene image viewer">
+
+    <button class="viewer-button viewer-close" id="viewerClose"
+      aria-label="Close viewer">×</button>
+
+    <button class="viewer-button viewer-prev" id="viewerPrev"
+      aria-label="Previous image">‹</button>
+
+    <div class="viewer-content">
+      <img id="viewerImage" src="" alt="">
+      <div class="viewer-caption" id="viewerCaption"></div>
+      <div class="viewer-count" id="viewerCount"></div>
+    </div>
+
+    <button class="viewer-button viewer-next" id="viewerNext"
+      aria-label="Next image">›</button>
+  </div>
+
+  <button id="topButton" class="top-button"
+    aria-label="Back to top">↑</button>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Add your image links and captions here.
+    const favoriteScenes = [
+      // Example:
+      // {
+      //   src: "https://example.com/naruto-scene.jpg",
+      //   title: "Naruto's best moment"
+      // },
+      // {
+      //   src: "https://example.com/sasuke-scene.jpg",
+      //   title: "Naruto and Sasuke"
+      // }
+    ];
+
+    const gallery = document.getElementById("favoriteGallery");
+    const viewer = document.getElementById("sceneViewer");
+    const viewerImage = document.getElementById("viewerImage");
+    const viewerCaption = document.getElementById("viewerCaption");
+    const viewerCount = document.getElementById("viewerCount");
+    let currentIndex = 0;
+
+    function renderGallery() {
+      gallery.innerHTML = "";
+
+      if (!favoriteScenes.length) {
+        const message = document.createElement("p");
+        message.className = "gallery-empty";
+        message.textContent =
+          "Your favorite scenes will appear here once you add image links.";
+        gallery.appendChild(message);
+        return;
+      }
+
+      favoriteScenes.forEach((scene, index) => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "favorite-scene";
+
+        const image = document.createElement("img");
+        image.src = scene.src;
+        image.alt = scene.title;
+        image.loading = "lazy";
+
+        const title = document.createElement("span");
+        title.className = "scene-title";
+        title.textContent = scene.title;
+
+        card.append(image, title);
+        card.addEventListener("click", () => openViewer(index));
+        gallery.appendChild(card);
+      });
+    }
+
+    function openViewer(index) {
+      currentIndex = index;
+      updateViewer();
+      viewer.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function updateViewer() {
+      const scene = favoriteScenes[currentIndex];
+      if (!scene) return;
+
+      viewerImage.src = scene.src;
+      viewerImage.alt = scene.title;
+      viewerCaption.textContent = scene.title;
+      viewerCount.textContent =
+        (currentIndex + 1) + " / " + favoriteScenes.length;
+    }
+
+    function moveViewer(direction) {
+      if (!favoriteScenes.length) return;
+
+      currentIndex =
+        (currentIndex + direction + favoriteScenes.length)
+        % favoriteScenes.length;
+
+      updateViewer();
+    }
+
+    function closeViewer() {
+      viewer.classList.remove("open");
+      viewerImage.src = "";
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("viewerPrev").addEventListener(
+      "click", () => moveViewer(-1)
+    );
+
+    document.getElementById("viewerNext").addEventListener(
+      "click", () => moveViewer(1)
+    );
+
+    document.getElementById("viewerClose").addEventListener(
+      "click", closeViewer
+    );
+
+    viewer.addEventListener("click", event => {
+      if (event.target === viewer) closeViewer();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!viewer.classList.contains("open")) return;
+
+      if (event.key === "Escape") closeViewer();
+      if (event.key === "ArrowLeft") moveViewer(-1);
+      if (event.key === "ArrowRight") moveViewer(1);
+    });
+
+    renderGallery();
+  </script>
+</body>
+</html>
