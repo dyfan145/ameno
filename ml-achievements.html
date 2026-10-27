@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080914">
+  <title>MLBB Achievements — Ameno.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .achievement-page {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .achievement-intro {
+      color: #aaa9c0;
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .achievement-card {
+      overflow: hidden;
+      border: 1px solid rgba(177, 151, 255, .2);
+      border-radius: 18px;
+      background: rgba(20, 19, 39, .8);
+      transition: transform .25s, border-color .25s;
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      border-color: #a995ff;
+    }
+
+    .achievement-photo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .achievement-info {
+      padding: 22px;
+    }
+
+    .achievement-label {
+      color: #b8a6ff;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .achievement-info h2 {
+      margin: 10px 0;
+    }
+
+    .achievement-award {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: #f4d58a;
+      background: rgba(244, 213, 138, .1);
+      border: 1px solid rgba(244, 213, 138, .3);
+      font-size: 13px;
+    }
+
+    .achievement-year {
+      color: #aaa9c0;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    .photo-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(3, 3, 12, .94);
+    }
+
+    .photo-viewer.open {
+      display: flex;
+    }
+
+    .photo-viewer img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .viewer-close,
+    .viewer-arrow {
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.25);
+      color: white;
+      background: rgba(30, 28, 48, .9);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    .viewer-close {
+      top: 20px;
+      right: 20px;
+    }
+
+    .viewer-arrow {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .viewer-prev {
+      left: 20px;
+    }
+
+    .viewer-next {
+      right: 20px;
+    }
+
+    .viewer-count {
+      position: absolute;
+      bottom: 20px;
+      color: white;
+      font-size: 14px;
+    }
+
+    @media (max-width: 500px) {
+      .achievement-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .viewer-prev {
+        left: 8px;
+      }
+
+      .viewer-next {
+        right: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">✦ ameno<span>.</span></a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Open navigation" aria-expanded="false">☰</button>
+
+    <nav id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="games.html">Games</a>
+      <a href="anime.html">Anime</a>
+      <a href="songs.html">Songs</a>
+    </nav>
+  </header>
+
+  <main class="section achievement-page">
+    <header class="page-header">
+      <span class="section-index">MLBB — PERSONAL HALL OF FAME</span>
+      <h1>My <em>Achievements.</em></h1>
+      <p class="achievement-intro">
+        Piala, medali, dan pencapaian dari perjalanan Mobile Legends-ku.
+        Setiap prestasi punya cerita tersendiri.
+        Klik foto untuk melihatnya lebih besar.
+      </p>
+    </header>
+
+    <section class="achievement-grid">
+      <article class="achievement-card">
+        <img
+          class="achievement-photo"
+          src="https://cdn.discordapp.com/attachments/741242990290534531/1564620151826161704/IMG_20261027_194133.jpg?ex=6ae1ed91&is=6ae09c11&hm=3e79dbf973c3debdff4c378cafa438a9ead36d09b30b3c9758596367c2a1d5af"
+          alt="Dokumentasi prestasi MVP Final HIMADIKSI CUP 2022"
+          loading="lazy"
+        >
+        <div class="achievement-info">
+          <span class="achievement-label">ACHIEVEMENT 01</span>
+          <h2>HIMADIKSI CUP</h2>
+          <span class="achievement-award">✦ MVP FINAL</span>
+          <p class="achievement-year">2022 · Mobile Legends: Bang Bang</p>
+        </div>
+      </article>
+    </section>
+
+    <div style="margin-top: 36px;">
+      <a class="button ghost" href="games.html">← Back to Games</a>
+    </div>
+  </main>
+
+  <footer>
+    <a class="brand" href="index.html">✦ ameno<span>.</span></a>
+    <span>MADE WITH ♡ & A LITTLE MAGIC</span>
+    <a href="#">BACK TO TOP ↑</a>
+  </footer>
+
+  <div class="photo-viewer" id="photoViewer" role="dialog"
+    aria-modal="true" aria-label="Achievement photo viewer">
+    <button class="viewer-close" id="viewerClose"
+      aria-label="Close photo">×</button>
+    <button class="viewer-arrow viewer-prev" id="viewerPrev"
+      aria-label="Previous photo">‹</button>
+    <img id="viewerImage" src="" alt="Expanded achievement photo">
+    <button class="viewer-arrow viewer-next" id="viewerNext"
+      aria-label="Next photo">›</button>
+    <span class="viewer-count" id="viewerCount">1 / 1</span>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const photos = [...document.querySelectorAll(".achievement-photo")];
+    const viewer = document.getElementById("photoViewer");
+    const viewerImage = document.getElementById("viewerImage");
+    const viewerCount = document.getElementById("viewerCount");
+    let currentPhoto = 0;
+
+    function showPhoto(index) {
+      currentPhoto = (index + photos.length) % photos.length;
+      viewerImage.src = photos[currentPhoto].src;
+      viewerImage.alt = photos[currentPhoto].alt;
+      viewerCount.textContent = `${currentPhoto + 1} / ${photos.length}`;
+    }
+
+    function openViewer(index) {
+      showPhoto(index);
+      viewer.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeViewer() {
+      viewer.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    photos.forEach((photo, index) => {
+      photo.addEventListener("click", () => openViewer(index));
+    });
+
+    document.getElementById("viewerClose").addEventListener("click", closeViewer);
+    document.getElementById("viewerPrev").addEventListener("click", () => showPhoto(currentPhoto - 1));
+    document.getElementById("viewerNext").addEventListener("click", () => showPhoto(currentPhoto + 1));
+
+    viewer.addEventListener("click", event => {
+      if (event.target === viewer) closeViewer();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!viewer.classList.contains("open")) return;
+      if (event.key === "Escape") closeViewer();
+      if (event.key === "ArrowLeft") showPhoto(currentPhoto - 1);
+      if (event.key === "ArrowRight") showPhoto(currentPhoto + 1);
+    });
+  </script>
+</body>
+</html>
